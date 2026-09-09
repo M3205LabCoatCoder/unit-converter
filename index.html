@@ -7,20 +7,185 @@
 
     <style>
         .length{
-            width: 1050px;
-            height: 600px;
+            width: 600px;
+            height: 200px;
             background-color: lightgrey;
+            border-radius: 50px;
         }
         .klopp{
-            margin: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        .mass{
+            width: 600px;
+            height: 200px;
+            background-color: lightgrey;
+            border-radius: 50px;
+            margin-top: 100px;
         }
     </style>
 </head>
 <body>
     <div class="klopp">
+        <h1>
+            UNIT CONVERTER
+        </h1>
         <div class="length">
-        <a href="http://youtube.com">w</a>
+            <h1 
+            style="display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;">
+                Length Unit Converter
+            </h1>
+            <div class="input-group">
+                <input id="inputFromLength" 
+                class="inputNumber" 
+                style="margin-left: 162px;"
+                type="number" 
+                step="any"
+                value="1"
+                min="0"
+                placeholder="0"
+                oninput="convert(this.value)">
+                <select id="selectFromLength" class="selectOption inputOption" onchange="onChangeUnit();">
+                <option value="cm">centimeter</option>
+                <option value="in">inch</option>
+                <option value="m">meter</option>
+                <option value="km">kilometer</option>
+                <option value="mi">mile</option>
+            </select>
+       
+            </div>
+            <div class="input-group">
+                <input id="inputToLength"
+                class="inputNumber"
+                style="margin-left: 162px;
+                margin-top: 20px;"
+                type="number" 
+                step="any" 
+                min="0"
+                value="1"
+                placeholder="0"
+                oninput="convertBack(this.value)">
+                <select id="selectToLength" class="selectOption inputOption" onchange="onChangeUnit();">
+                <option value="cm">centimeter</option>
+                <option value="in">inch</option>
+                <option value="m">meter</option>
+                <option value="km">kilometer</option>
+                <option value="mi">mile</option>
+            </select>
+            </div>
+
+
+        <div class="mass">
+            <h1 
+            style="display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;">
+                Mass Unit Converter
+            </h1>
+            <div class="input-group">
+                <input id="inputFromMass" 
+                class="inputNumber" 
+                style="margin-left: 162px;"
+                type="number" 
+                step="any"
+                value="1"
+                min="0"
+                placeholder="0"
+                oninput="convertMass(this.value)">
+                <select id="selectFromMass" class="selectOption inputOption" onchange="onChangeUnit();">
+                <option value="g">gram</option>
+                <option value="kg">kilogram</option>
+            </select>
+            </div>
+            <div class="input-group">
+                <input id="inputToMass"
+                class="inputNumber"
+                style="margin-left: 162px;
+                margin-top: 20px;"
+                type="number" 
+                step="any" 
+                min="0"
+                value="1"
+                placeholder="0"
+                oninput="convertMassBack(this.value)">
+                <select id="selectToMass" class="selectOption inputOption" onchange="onChangeUnit();">
+                <option value="g">gram</option>
+                <option value="kg">kilogram</option>
+            </select>
+            </div>
+            
     </div>
     </div>
+    <script>
+        const ratesInMeters = {
+            m: 1,
+            cm: 0.01,
+            in: 0.0254,
+            km: 1000,
+            mi: 1609.344
+        };
+
+        function convert(val) {
+            const fromUnit = document.getElementById('selectFromLength').value;
+            const toUnit = document.getElementById('selectToLength').value;
+            const inputToEl = document.getElementById('inputToLength');
+
+            if (!val || isNaN(val)) {
+                inputToEl.value = '';
+                return;
+            }
+
+            const valueInMeters = val * ratesInMeters[fromUnit];
+            const convertedValue = valueInMeters / ratesInMeters[toUnit];
+            
+            inputToEl.value = Number(convertedValue.toFixed(6));
+        }
+
+        function convertBack(val) {
+            const fromUnit = document.getElementById('selectFromLLength').value;
+            const toUnit = document.getElementById('selectToLength').value;
+            const inputFromEl = document.getElementById('inputFromLength');
+
+            if (!val || isNaN(val)) {
+                inputFromEl.value = '';
+                return;
+            }
+
+            const valueInMeters = val * ratesInMeters[toUnit];
+            const convertedValue = valueInMeters / ratesInMeters[fromUnit];
+            
+            inputFromEl.value = Number(convertedValue.toFixed(6));
+        }
+
+        function onChangeUnit() {
+            const currentFromVal = document.getElementById('inputFromLength').value;
+            convert(currentFromVal);
+        }
+
+        const ratesInKilometers = {
+            g: 0.001,
+            kg: 1
+        };
+
+        function convertMass(val) {
+            const fromUnit = document.getElementById('selectFromMass').value;
+            const toUnit = document.getElementById('selectToMass').value;
+            const inputToEl = document.getElementById('inputToMass');
+
+            if (val || isNaN(val)) {
+                inputToEl.value = '';
+                return
+            }
+        }
+    </script>
 </body>
 </html>
