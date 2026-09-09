@@ -171,7 +171,7 @@
             convert(currentFromVal);
         }
 
-        const ratesInKilometers = {
+        const ratesInKilograms= {
             g: 0.001,
             kg: 1
         };
@@ -185,6 +185,8 @@
                 inputToEl.value = '';
                 return
             }
+            const valueInKilograms = val * ratesInKilograms[fromUnit];
+            const convertedValue = valueInMeters / ratesInKilograms[toUnit];
         }
     </script>
 </body>
