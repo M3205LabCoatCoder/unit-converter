@@ -3,191 +3,288 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Unit Converter</title>
 
     <style>
-        .length{
-            width: 600px;
-            height: 200px;
-            background-color: lightgrey;
-            border-radius: 50px;
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f4f6;
+            text-align: center;
+            padding: 30px;
         }
-        .klopp{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
+
+        .card {
+            width: 350px;
+            background-color: #ffffff;
+            border: 1px solid #cccccc;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 0 auto 25px auto;
         }
-        .mass{
-            width: 600px;
-            height: 200px;
-            background-color: lightgrey;
-            border-radius: 50px;
-            margin-top: 100px;
+
+        .card h2 {
+            margin-top: 0;
         }
+
+        .field-row {
+            margin-bottom: 10px;
+        }
+
+        .field-row input,
+        .field-row select {
+            padding: 6px;
+            font-size: 14px;
+        }
+
+        .to-row {
+            margin-bottom: 15px;
+        }
+
+        .to-row select {
+            padding: 6px;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 8px 16px;
+            font-size: 14px;
+            background-color: #3d6bf0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .result-box {
+            margin-top: 12px;
+            font-size: 14px;
+        }
+    
     </style>
 </head>
 <body>
-    <div class="klopp">
-        <h1>
-            UNIT CONVERTER
-        </h1>
-        <div class="length">
-            <h1 
-            style="display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;">
-                Length Unit Converter
-            </h1>
-            <div class="input-group">
-                <input id="inputFromLength" 
-                class="inputNumber" 
-                style="margin-left: 162px;"
-                type="number" 
-                step="any"
-                value="1"
-                min="0"
-                placeholder="0"
-                oninput="convert(this.value)">
-                <select id="selectFromLength" class="selectOption inputOption" onchange="onChangeUnit();">
-                <option value="cm">centimeter</option>
-                <option value="in">inch</option>
-                <option value="m">meter</option>
-                <option value="km">kilometer</option>
-                <option value="mi">mile</option>
-            </select>
-       
-            </div>
-            <div class="input-group">
-                <input id="inputToLength"
-                class="inputNumber"
-                style="margin-left: 162px;
-                margin-top: 20px;"
-                type="number" 
-                step="any" 
-                min="0"
-                value="1"
-                placeholder="0"
-                oninput="convertBack(this.value)">
-                <select id="selectToLength" class="selectOption inputOption" onchange="onChangeUnit();">
-                <option value="cm">centimeter</option>
-                <option value="in">inch</option>
-                <option value="m">meter</option>
-                <option value="km">kilometer</option>
-                <option value="mi">mile</option>
-            </select>
-            </div>
+    <h1>Unit Converter</h1>
 
+        <div class="card">
+            <h2>Length</h2>
+            <div class="field-row">
+                <input id="inputFromLength" type="number" step="any" value="1" min="0" placeholder="0">
+                <select id="selectFromLength">
+                    <option value="cm">centimeter</option>
+                    <option value="in">inch</option>
+                    <option value="m">meter</option>
+                    <option value="km">kilometer</option>
+                    <option value="mi">mile</option>
+                </select>
+            </div>
+            <div class="to-row">
+                <span>to</span>
+                <select id="selectToLength">
+                    <option value="cm">centimeter</option>
+                    <option value="in">inch</option>
+                    <option value="m">meter</option>
+                    <option value="km">kilometer</option>
+                    <option value="mi">mile</option>
+                </select>
+            </div>
+            <button id="convertLengthBtn" type="button">Convert</button>
+            <p id="resultLength" class="result-box"></p>
+        </div>
 
-        <div class="mass">
-            <h1 
-            style="display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;">
-                Mass Unit Converter
-            </h1>
-            <div class="input-group">
-                <input id="inputFromMass" 
-                class="inputNumber" 
-                style="margin-left: 162px;"
-                type="number" 
-                step="any"
-                value="1"
-                min="0"
-                placeholder="0"
-                oninput="convertMass(this.value)">
-                <select id="selectFromMass" class="selectOption inputOption" onchange="onChangeUnit();">
-                <option value="g">gram</option>
-                <option value="kg">kilogram</option>
-            </select>
+        <div class="card">
+            <h2>Mass</h2>
+            <div class="field-row">
+                <input id="inputFromMass" type="number" step="any" value="1" min="0" placeholder="0">
+                <select id="selectFromMass">
+                    <option value="g">gram</option>
+                    <option value="kg">kilogram</option>
+                    <option value="mg">milligram</option>
+                    <option value="lb">pound</option>
+                    <option value="oz">ounce</option>
+                    <option value="t">metric ton</option>
+                </select>
             </div>
-            <div class="input-group">
-                <input id="inputToMass"
-                class="inputNumber"
-                style="margin-left: 162px;
-                margin-top: 20px;"
-                type="number" 
-                step="any" 
-                min="0"
-                value="1"
-                placeholder="0"
-                oninput="convertMassBack(this.value)">
-                <select id="selectToMass" class="selectOption inputOption" onchange="onChangeUnit();">
-                <option value="g">gram</option>
-                <option value="kg">kilogram</option>
-            </select>
+            <div class="to-row">
+                <span>to</span>
+                <select id="selectToMass">
+                    <option value="g">gram</option>
+                    <option value="kg">kilogram</option>
+                    <option value="mg">milligram</option>
+                    <option value="lb">pound</option>
+                    <option value="oz">ounce</option>
+                    <option value="t">metric ton</option>
+                </select>
             </div>
-            
-    </div>
-    </div>
+            <button id="convertMassBtn" type="button">Convert</button>
+            <p id="resultMass" class="result-box"></p>
+        </div>
+
+        <div class="card">
+            <h2>Temperature</h2>
+            <div class="field-row">
+                <input id="inputFromTemperature" type="number" step="any" value="0" placeholder="0">
+                <select id="selectFromTemperature">
+                    <option value="c">Celsius</option>
+                    <option value="f">Fahrenheit</option>
+                    <option value="k">Kelvin</option>
+                </select>
+            </div>
+            <div class="to-row">
+                <span>to</span>
+                <select id="selectToTemperature">
+                    <option value="c">Celsius</option>
+                    <option value="f">Fahrenheit</option>
+                    <option value="k">Kelvin</option>
+                </select>
+            </div>
+            <button id="convertTemperatureBtn" type="button">Convert</button>
+            <p id="resultTemperature" class="result-box"></p>
+        </div>
     <script>
-        const ratesInMeters = {
-            m: 1,
-            cm: 0.01,
-            in: 0.0254,
-            km: 1000,
-            mi: 1609.344
-        };
+        function getMetersPerUnit(unit) {
+            if (unit === "m") {
+                return 1;
+            } else if (unit === "cm") {
+                return 0.01;
+            } else if (unit === "in") {
+                return 0.0254;
+            } else if (unit === "km") {
+                return 1000;
+            } else if (unit === "mi") {
+                return 1609.344;
+            }
+        }
 
-        function convert(val) {
-            const fromUnit = document.getElementById('selectFromLength').value;
-            const toUnit = document.getElementById('selectToLength').value;
-            const inputToEl = document.getElementById('inputToLength');
+        let inputFromLength = document.getElementById("inputFromLength");
+        let selectFromLength = document.getElementById("selectFromLength");
+        let selectToLength = document.getElementById("selectToLength");
+        let convertLengthBtn = document.getElementById("convertLengthBtn");
+        let resultLength = document.getElementById("resultLength");
 
-            if (!val || isNaN(val)) {
-                inputToEl.value = '';
+        function convertLength() {
+            let value = Number(inputFromLength.value);
+            let fromUnit = selectFromLength.value;
+            let toUnit = selectToLength.value;
+
+            if (inputFromLength.value === "" || isNaN(value)) {
+                resultLength.textContent = "Please enter a valid number.";
                 return;
             }
 
-            const valueInMeters = val * ratesInMeters[fromUnit];
-            const convertedValue = valueInMeters / ratesInMeters[toUnit];
-            
-            inputToEl.value = Number(convertedValue.toFixed(6));
+            let fromRate = getMetersPerUnit(fromUnit);
+            let toRate = getMetersPerUnit(toUnit);
+            let valueInMeters = value * fromRate;
+            let convertedValue = valueInMeters / toRate;
+            let roundedValue = Number(convertedValue.toFixed(5));
+
+            resultLength.textContent = value + " " + fromUnit + " = " + roundedValue + " " + toUnit;
+            resultLength.style.backgroundColor = "lightgreen";
+            resultLength.style.padding = "10px";
+            resultLength.style.borderRadius = "5px";
         }
 
-        function convertBack(val) {
-            const fromUnit = document.getElementById('selectFromLLength').value;
-            const toUnit = document.getElementById('selectToLength').value;
-            const inputFromEl = document.getElementById('inputFromLength');
+        convertLengthBtn.addEventListener("click", function() {
+            convertLength();
+        });
 
-            if (!val || isNaN(val)) {
-                inputFromEl.value = '';
+        function getKilogramsPerUnit(unit) {
+            if (unit === "g") {
+                return 0.001;
+            } else if (unit === "kg") {
+                return 1;
+            } else if (unit === "mg") {
+                return 0.000001;
+            } else if (unit === "lb") {
+                return 0.45359237;
+            } else if (unit === "oz") {
+                return 0.028349523125;
+            } else if (unit === "t") {
+                return 1000;
+            }
+        }
+
+        let inputFromMass = document.getElementById("inputFromMass");
+        let selectFromMass = document.getElementById("selectFromMass");
+        let selectToMass = document.getElementById("selectToMass");
+        let convertMassBtn = document.getElementById("convertMassBtn");
+        let resultMass = document.getElementById("resultMass");
+
+        function convertMass() {
+            let value = Number(inputFromMass.value);
+            let fromUnit = selectFromMass.value;
+            let toUnit = selectToMass.value;
+
+            if (inputFromMass.value === "" || isNaN(value)) {
+                resultMass.textContent = "Please enter a valid number.";
                 return;
             }
 
-            const valueInMeters = val * ratesInMeters[toUnit];
-            const convertedValue = valueInMeters / ratesInMeters[fromUnit];
-            
-            inputFromEl.value = Number(convertedValue.toFixed(6));
+            let fromRate = getKilogramsPerUnit(fromUnit);
+            let toRate = getKilogramsPerUnit(toUnit);
+            let valueInKilograms = value * fromRate;
+            let convertedValue = valueInKilograms / toRate;
+            let roundedValue = Number(convertedValue.toFixed(5));
+
+            resultMass.textContent = value + " " + fromUnit + " = " + roundedValue + " " + toUnit;
+            resultMass.style.backgroundColor = "lightgreen";
+            resultMass.style.padding = "10px";
+            resultMass.style.borderRadius = "5px";
         }
 
-        function onChangeUnit() {
-            const currentFromVal = document.getElementById('inputFromLength').value;
-            convert(currentFromVal);
-        }
+        convertMassBtn.addEventListener("click", function() {
+            convertMass();
+        });
 
-        const ratesInKilograms= {
-            g: 0.001,
-            kg: 1
-        };
-
-        function convertMass(val) {
-            const fromUnit = document.getElementById('selectFromMass').value;
-            const toUnit = document.getElementById('selectToMass').value;
-            const inputToEl = document.getElementById('inputToMass');
-
-            if (val || isNaN(val)) {
-                inputToEl.value = '';
-                return
+        function convertToCelsius(value, unit) {
+            if (unit === "c") {
+                return value;
+            } else if (unit === "f") {
+                return (value - 32) * (5 / 9);
+            } else if (unit === "k") {
+                return value - 273.15;
             }
-            const valueInKilograms = val * ratesInKilograms[fromUnit];
-            const convertedValue = valueInMeters / ratesInKilograms[toUnit];
         }
+
+        function convertFromCelsius(celsiusValue, unit) {
+            if (unit === "c") {
+                return celsiusValue;
+            } else if (unit === "f") {
+                return celsiusValue * (9 / 5) + 32;
+            } else if (unit === "k") {
+                return celsiusValue + 273.15;
+            }
+        }
+
+        let inputFromTemperature = document.getElementById("inputFromTemperature");
+        let selectFromTemperature = document.getElementById("selectFromTemperature");
+        let selectToTemperature = document.getElementById("selectToTemperature");
+        let convertTemperatureBtn = document.getElementById("convertTemperatureBtn");
+        let resultTemperature = document.getElementById("resultTemperature");
+
+        function convertTemperature() {
+            let value = Number(inputFromTemperature.value);
+            let fromUnit = selectFromTemperature.value;
+            let toUnit = selectToTemperature.value;
+
+            if (inputFromTemperature.value === "" || isNaN(value)) {
+                resultTemperature.textContent = "Please enter a valid number.";
+                return;
+            }
+
+            let celsiusValue = convertToCelsius(value, fromUnit);
+            let convertedValue = convertFromCelsius(celsiusValue, toUnit);
+            let roundedValue = Number(convertedValue.toFixed(5));
+
+            resultTemperature.textContent = value + " " + fromUnit + " = " + roundedValue + " " + toUnit;
+            resultTemperature.style.backgroundColor = "lightgreen";
+            resultTemperature.style.padding = "10px";
+            resultTemperature.style.borderRadius = "5px";
+        }
+
+        convertTemperatureBtn.addEventListener("click", function() {
+            convertTemperature();
+        });
     </script>
 </body>
 </html>
