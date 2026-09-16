@@ -15,7 +15,7 @@
         }
 
         .card {
-            width: 350px;
+            width: 600px;
             background-color: #ffffff;
             border: 1px solid #cccccc;
             border-radius: 8px;
@@ -34,7 +34,7 @@
         .field-row input,
         .field-row select {
             padding: 6px;
-            font-size: 14px;
+            font-size: 20px;
         }
 
         .to-row {
@@ -43,12 +43,12 @@
 
         .to-row select {
             padding: 6px;
-            font-size: 14px;
+            font-size: 20px;
         }
 
         button {
             padding: 8px 16px;
-            font-size: 14px;
+            font-size: 20px;
             background-color: #3d6bf0;
             color: white;
             border: none;
@@ -58,28 +58,36 @@
 
         .result-box {
             margin-top: 12px;
-            font-size: 14px;
+            font-size: 20px;
         }
     
     </style>
 </head>
 <body>
-    <h1>Unit Converter</h1>
+    <h1 style="font-size: 100px;">Unit Converter</h1>
+    <h1>INTRODUCTION</h1>
+    <p style="margin-left: 400px;
+    margin-right: 400px;
+    margin-bottom: 75px;
+    font-size: 20px;">This website can help you getting out from your problems. This website can convert unit in length, mass, and tempurature by just
+        type the number you want to convert in the box then choose the unit that you want to convert from the number and the unit that
+        you want to convert to.
+    </p>
 
         <div class="card">
-            <h2>Length</h2>
+            <h2 style="font-size: 40px">Length</h2>
             <div class="field-row">
                 <input id="inputFromLength" type="number" step="any" value="1" min="0" placeholder="0">
                 <select id="selectFromLength">
                     <option value="cm">centimeter</option>
                     <option value="in">inch</option>
-                    <option value="m">meter</option>
+                    <option value="m">meter</   option>
                     <option value="km">kilometer</option>
                     <option value="mi">mile</option>
                 </select>
             </div>
             <div class="to-row">
-                <span>to</span>
+                <span style="font-size: 20px;">to</span>
                 <select id="selectToLength">
                     <option value="cm">centimeter</option>
                     <option value="in">inch</option>
@@ -93,7 +101,7 @@
         </div>
 
         <div class="card">
-            <h2>Mass</h2>
+            <h2 style="font-size: 40px">Mass</h2>
             <div class="field-row">
                 <input id="inputFromMass" type="number" step="any" value="1" min="0" placeholder="0">
                 <select id="selectFromMass">
@@ -106,7 +114,7 @@
                 </select>
             </div>
             <div class="to-row">
-                <span>to</span>
+                <span style="font-size: 20px;">to</span>
                 <select id="selectToMass">
                     <option value="g">gram</option>
                     <option value="kg">kilogram</option>
@@ -121,21 +129,21 @@
         </div>
 
         <div class="card">
-            <h2>Temperature</h2>
+            <h2 style="font-size: 40px">Temperature</h2>
             <div class="field-row">
                 <input id="inputFromTemperature" type="number" step="any" value="0" placeholder="0">
                 <select id="selectFromTemperature">
-                    <option value="c">Celsius</option>
-                    <option value="f">Fahrenheit</option>
-                    <option value="k">Kelvin</option>
+                    <option value="°c">Celsius</option>
+                    <option value="°f">Fahrenheit</option>
+                    <option value="°k">Kelvin</option>
                 </select>
             </div>
             <div class="to-row">
-                <span>to</span>
+                <span style="font-size: 20px;">to</span>
                 <select id="selectToTemperature">
-                    <option value="c">Celsius</option>
-                    <option value="f">Fahrenheit</option>
-                    <option value="k">Kelvin</option>
+                    <option value="°c">Celsius</option>
+                    <option value="°f">Fahrenheit</option>
+                    <option value="°k">Kelvin</option>
                 </select>
             </div>
             <button id="convertTemperatureBtn" type="button">Convert</button>
@@ -237,21 +245,21 @@
         });
 
         function convertToCelsius(value, unit) {
-            if (unit === "c") {
+            if (unit === "°c") {
                 return value;
-            } else if (unit === "f") {
+            } else if (unit === "°f") {
                 return (value - 32) * (5 / 9);
-            } else if (unit === "k") {
+            } else if (unit === "°k") {
                 return value - 273.15;
             }
         }
 
         function convertFromCelsius(celsiusValue, unit) {
-            if (unit === "c") {
+            if (unit === "°c") {
                 return celsiusValue;
-            } else if (unit === "f") {
+            } else if (unit === "°f") {
                 return celsiusValue * (9 / 5) + 32;
-            } else if (unit === "k") {
+            } else if (unit === "°k") {
                 return celsiusValue + 273.15;
             }
         }
